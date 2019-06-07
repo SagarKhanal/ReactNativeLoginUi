@@ -17,22 +17,22 @@ const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
 
 export default class LoginPage extends Component {
+
+    state ={
+        username:'Sagar',
+        password:'',
+        isLoggedIn:false,
+    }
     
     static navigationOptions={
         header:null,
     }
+    
+    onSubmit=()=>{
+        this.props.navigation.navigate('Dashboard');
+    }
 
     render() {
-        state ={
-            username:'',
-            password:'',
-            isLoggedIn:false,
-        }
-
-        onSubmit=()=>{
-
-        }
-
         return (
             <ImageBackground style={styles.imgBgnd} source={{uri:api.data.background}}>
                 <StatusBar hidden/>
@@ -47,8 +47,9 @@ export default class LoginPage extends Component {
                                            style={styles.input}
                                            placeholder="USERNAME"
                                            autoCorrect={false}
-                                           spellCheck={false}                                           textContentType="username"
-                                           onChangeText={(username)=>this.setState({username})}
+                                           spellCheck={false}
+                                           textContentType="username"
+                                           onChangeText={(username) => this.setState({username})}
                                         />
                                 <TextInput placeholderTextColor="white"
                                            placeholder="PASSWORD"
@@ -57,11 +58,11 @@ export default class LoginPage extends Component {
                                            spellCheck={false}   
                                            textContentType='password'
                                            secureTextEntry
-                                           onChangeText={(username)=>this.setState({username})}
+                                           onChangeText={(password) => this.setState({password})}
                                         />
                             </View>   
                             <View style={styles.button}>
-                                <TouchableOpacity style={{alignSelf:'center'}}>
+                                <TouchableOpacity style={{alignSelf:'center'}} onPress={this.onSubmit}>
                                     <Text style={styles.submit}>LOGIN</Text>
                                 </TouchableOpacity>
                             </View>    
