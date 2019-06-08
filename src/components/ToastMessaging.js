@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-export default class DashboardPage extends Component {
+export default class ToastMessaging extends Component {
     render() {
         return (
             <View>
-                <Text> Hello World </Text>
+                <Text> textInComponent </Text>
             </View>
         )
     }
