@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text,Dimensions, Image,View, StyleSheet, FlatList,StatusBar,ImageBackground } from 'react-native'
+import { Dimensions, Image,View, StyleSheet, FlatList,ImageBackground } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import api from '../api/images'
 

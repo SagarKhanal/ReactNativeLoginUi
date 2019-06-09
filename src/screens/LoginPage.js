@@ -135,7 +135,7 @@ export default class LoginPage extends Component {
     
     
     onSubmit=(email,password)=>{
-        if(email=='' | password==''){
+        if(!email || !password){
             this.setState({errorMessage:"Enter the details"})
             setTimeout(()=>this.setState({errorMessage:''}),2000)
         }
@@ -164,12 +164,8 @@ export default class LoginPage extends Component {
                             </View>   
                             <View style={styles.button}>
                                 <TouchableOpacity style={{alignSelf:'center'}} onPress={()=>this.onSubmit(this.state.email,this.state.password)}>
-                                {/* <TouchableOpacity style={{alignSelf:'center'}} onPress={()=>this.clickHandler()}> */}
                                     <Text style={styles.submit}>LOGIN</Text>
                                 </TouchableOpacity>
-                                {/* <TouchableOpacity style={{alignSelf:'center'}} onPress={()=>this.clickHandler()}>
-                                    <Text style={styles.submit}>{`Authenticate with ${this.state.biometryType}`}</Text>
-                                </TouchableOpacity> */}
                             </View>   
                             <Text style={styles.errorMsg}>{this.state.errorMessage}</Text>
                                     <View style={{flex:1}}>
@@ -236,8 +232,7 @@ const styles = StyleSheet.create({
         fontSize:15,
         alignSelf:'center',
         top:8,
-        fontSize:22
-    },
+        },
     errorMsg:{
         fontSize:20,
         textAlign:'center',
