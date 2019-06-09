@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     },
     submit:{
         color:'black',
-        fontSize:15,
+        fontSize:25,
         alignSelf:'center',
         top:8,
         },

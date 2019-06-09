@@ -1,34 +1,12 @@
 import React, { Component } from 'react'
-import { Dimensions, Image,View, StyleSheet, FlatList,ImageBackground } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import { Dimensions, Image,View, StyleSheet,FlatList,ImageBackground, RefreshControl } from 'react-native'
+// import Icon from 'react-native-vector-icons/FontAwesome5'
 import api from '../api/images'
+
+// import Video from 'react-native-video'
 
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
-
-
-const images ={
-    "data":[
-        "https://images.unsplash.com/photo-1519895609939-d2a6491c1196",
-       "https://images.unsplash.com/photo-1510227272981-87123e259b17",
-        "https://images.unsplash.com/photo-1510633616729-b6c0fcabe9f0",
-        "https://images.unsplash.com/photo-1500521680613-a8f77c5cd0f5",
-        "https://images.unsplash.com/photo-1518675970634-bdd3fe443f52",
-        "https://images.unsplash.com/photo-1519895609939-d2a6491c1196",
-       "https://images.unsplash.com/photo-1510227272981-87123e259b17",
-        "https://images.unsplash.com/photo-1510633616729-b6c0fcabe9f0",
-        "https://images.unsplash.com/photo-1500521680613-a8f77c5cd0f5",
-        "https://images.unsplash.com/photo-1518675970634-bdd3fe443f52",
-        "https://images.unsplash.com/photo-1518675970634-bdd3fe443f52",
-        "https://images.unsplash.com/photo-1519895609939-d2a6491c1196",
-       "https://images.unsplash.com/photo-1510227272981-87123e259b17",
-       "https://images.unsplash.com/photo-1510227272981-87123e259b17",
-       "https://images.unsplash.com/photo-1510227272981-87123e259b17",
-        "https://images.unsplash.com/photo-1510633616729-b6c0fcabe9f0",
-        "https://images.unsplash.com/photo-1500521680613-a8f77c5cd0f5",
-        "https://images.unsplash.com/photo-1518675970634-bdd3fe443f52",
-    ]
-}
 
 
 export default class DashboardPage extends Component {
@@ -36,34 +14,43 @@ export default class DashboardPage extends Component {
 
     state = {
         dataSource: {},
+        refreshing: false,
     }
 
     componentDidMount() {
+        this.fetchData()
+      }
+
+      _onRefresh = () => {
+        this.setState({refreshing: true});
+        this.fetchData()
+      }
+
+    fetchData=()=>{
         var that = this;
-        let items = Array.apply(null, Array(10)).map((v, i) => {
-          return { id: i, src: images.data[i] };
+        let items = Array.apply(null, Array(api.images.length)).map((v, i) => {
+        const j = parseInt((Math.random() * api.images.length), 10)
+          return { id: j, src: api.images[j].url };
         });
         that.setState({
           //Setting the data source
           dataSource: items,
+          refreshing:false,
+          pause:true
         });
-      }
+    }
 
     static navigationOptions = {
         title: 'Home',
-    headerStyle: {
-      backgroundColor: '#000000',
-      opacity:0.9,
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-    headerRight : <Icon.Button name="sign-out-alt" size={35} color="white" style={{right:5,}} onPress={()=>{
-        alert("Working on it now")
-    }} />
+        headerStyle: {
+            backgroundColor: '#000000',
+            opacity:0.9,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+        fontWeight: 'bold',
+        },
     }
-
 
     render() {
         return (
@@ -81,6 +68,12 @@ export default class DashboardPage extends Component {
                 //Setting the number of column
                 numColumns={2}
                 keyExtractor={(item, index) => index}
+                refreshControl={
+                    <RefreshControl
+                      refreshing={this.state.refreshing}
+                      onRefresh={this._onRefresh}
+                    />
+                  }
                 />
                     </View>
                 </View>
@@ -107,6 +100,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 190,
-        margin:4
+        margin:4,
+        // opacity:0.6,
       },
 })
