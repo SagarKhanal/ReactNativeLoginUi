@@ -60,7 +60,7 @@ export default class DashboardPage extends Component {
       fontWeight: 'bold',
     },
     headerRight : <Icon.Button name="sign-out-alt" size={35} color="white" style={{right:5,}} onPress={()=>{
-        alert("Working on it yar")
+        alert("Working on it now")
     }} />
     }
 
