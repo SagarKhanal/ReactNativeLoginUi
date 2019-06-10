@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions, Image,View, StyleSheet,FlatList,ImageBackground, RefreshControl } from 'react-native'
+import { Dimensions,View,StyleSheet,FlatList,ImageBackground,TouchableOpacity, RefreshControl,Modal } from 'react-native'
 // import Icon from 'react-native-vector-icons/FontAwesome5'
 import api from '../api/images'
 
@@ -17,6 +17,8 @@ export default class DashboardPage extends Component {
     state = {
         dataSource: {},
         refreshing: false,
+        visible:false,
+        temp:''
     }
 
     componentDidMount() {
@@ -54,6 +56,11 @@ export default class DashboardPage extends Component {
         },
     }
 
+    setModalVisible(visible,item) {
+        this.setState({visible: visible,temp:item});
+      }
+    
+
     render() {
         return (
             <ImageBackground source={{uri:api.data.darkportrait}} style={styles.imgBgnd}>
@@ -64,7 +71,10 @@ export default class DashboardPage extends Component {
                 data={this.state.dataSource}
                 renderItem={({ item }) => (
                     <View style={{ flex: 1, flexDirection: 'column', margin: 1 }}>
+                   
+                    <TouchableOpacity activeOpacity={0} onPress={()=>this.setModalVisible(true,item.src)}>
                     <CacheImage style={styles.imageThumbnail} source={{ uri: item.src }} />
+                    </TouchableOpacity>
                     </View>
                 )}
                 //Setting the number of column
@@ -79,6 +89,9 @@ export default class DashboardPage extends Component {
                 />
                     </View>
                 </View>
+                <Modal visible={this.state.visible} transparent animationType='fade' onRequestClose={()=>this.setModalVisible(false)}>
+            <CacheImage style={{width:width,height:height}} source={{uri:this.state.temp}}/>
+            </Modal>
             </ImageBackground>
         )
     }
