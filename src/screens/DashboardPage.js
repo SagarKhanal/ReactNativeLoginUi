@@ -5,6 +5,8 @@ import api from '../api/images'
 
 // import Video from 'react-native-video'
 
+import CacheImage from '../components/CacheImage'
+
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
 
@@ -62,7 +64,7 @@ export default class DashboardPage extends Component {
                 data={this.state.dataSource}
                 renderItem={({ item }) => (
                     <View style={{ flex: 1, flexDirection: 'column', margin: 1 }}>
-                    <Image style={styles.imageThumbnail} source={{ uri: item.src }} />
+                    <CacheImage style={styles.imageThumbnail} source={{ uri: item.src }} />
                     </View>
                 )}
                 //Setting the number of column
