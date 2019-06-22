@@ -189,7 +189,7 @@ export default class LoginPage extends Component {
 const styles = StyleSheet.create({
     mainContainer:{
         flex:1,
-        backgroundColor:'rgba(5,5,5,0.5)'
+        backgroundColor:'rgba(5,5,5,0.5)',
     },
     container:{
         backgroundColor: 'rgba(129, 190, 52, 0.8)',

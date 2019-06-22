@@ -1,5 +1,6 @@
 import LoginPage from './src/screens/LoginPage'
 import DashboardPage from './src/screens/DashboardPage'
+import Gallery from './src/screens/Gallery'
 import {
   createAppContainer,
   createStackNavigator
@@ -7,6 +8,7 @@ import {
 
 
 const AppNavigaton = createStackNavigator({
+  Gallery:Gallery,
   Home:LoginPage,
   Dashboard:DashboardPage,
 })

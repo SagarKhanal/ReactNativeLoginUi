@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
-import { Dimensions,View,StyleSheet,FlatList,ImageBackground,TouchableOpacity, RefreshControl,Modal } from 'react-native'
-// import Icon from 'react-native-vector-icons/FontAwesome5'
+import { 
+    PermissionsAndroid,
+    CameraRoll,
+    Dimensions,
+    View,
+    StyleSheet,
+    FlatList,
+    ImageBackground,
+    TouchableOpacity,
+    RefreshControl,
+    Modal
+ } from 'react-native'
 import api from '../api/images'
-
-// import Video from 'react-native-video'
-
 import CacheImage from '../components/CacheImage'
-
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
 
@@ -15,7 +21,7 @@ export default class DashboardPage extends Component {
 
 
     state = {
-        dataSource: {},
+        dataSource: [],
         refreshing: false,
         visible:false,
         temp:''
@@ -23,6 +29,24 @@ export default class DashboardPage extends Component {
 
     componentDidMount() {
         this.fetchData()
+        this.grantPermission()
+      }
+
+      grantPermission= async ()=>{
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+                {
+                  title: 'My App Storage Permission',
+                  message: 'My App needs access to your storage ' +
+                    'so you can save your photos',
+                },
+              );
+              return granted;
+        } catch (error) {
+            console.error('Failed to request permission ', error);
+            return null;
+        }
       }
 
       _onRefresh = () => {
@@ -31,17 +55,19 @@ export default class DashboardPage extends Component {
       }
 
     fetchData=()=>{
-        var that = this;
-        let items = Array.apply(null, Array(api.images.length)).map((v, i) => {
-        const j = parseInt((Math.random() * api.images.length), 10)
-          return { id: j, src: api.images[j].url };
-        });
-        that.setState({
-          //Setting the data source
-          dataSource: items,
-          refreshing:false,
-          pause:true
-        });
+        CameraRoll.getPhotos({
+            first:100,
+            assetType:'All',
+        })
+        .then(r=>{
+            this.setState({
+                dataSource:r.edges,
+                refreshing:false,
+                pause:true
+            })
+            console.log("Data",r.edges)
+        })
+        .catch((err)=>console.log(err))
     }
 
     static navigationOptions = {
@@ -72,8 +98,8 @@ export default class DashboardPage extends Component {
                 renderItem={({ item }) => (
                     <View style={{ flex: 1, flexDirection: 'column', margin: 1 }}>
                    
-                    <TouchableOpacity activeOpacity={0} onPress={()=>this.setModalVisible(true,item.src)}>
-                    <CacheImage style={styles.imageThumbnail} source={{ uri: item.src }} />
+                    <TouchableOpacity activeOpacity={0} onPress={()=>this.setModalVisible(true,item.node.image.uri)}>
+                    <CacheImage style={styles.imageThumbnail} source={{ uri: item.node.image.uri }} />
                     </TouchableOpacity>
                     </View>
                 )}
