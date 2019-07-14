@@ -4983,7 +4983,7 @@ prop-types@15.5.10:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5130,13 +5130,13 @@ react-native-fingerprint-android@^0.1.7:
   resolved "https://registry.yarnpkg.com/react-native-fingerprint-android/-/react-native-fingerprint-android-0.1.7.tgz#157aee05e8742c7bfd0861fdf00f6bda00b6406a"
   integrity sha512-rTrs3xM5DmrUX9ZuhXx7b6rR3fDO31cmKo7NFRixQNxFrZ4CQ2HVmI02sCLet/appR8hZe6v55Nomdas8RjwOA==
 
-react-native-firebase@^5.4.3:
-  version "5.4.3"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.4.3.tgz#3c14c0f72b5593bb3aa4f91e417cbf459b60f15c"
-  integrity sha512-JnE4IK/NuST+QfgzlCKtHtjpjPcLYB2/us2YnK2jGGNeCRwARWbNUPgATLkkPAJYqRIfjxXBadqBabrVsXGCVw==
+react-native-firebase@^5.5.5:
+  version "5.5.5"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.5.5.tgz#d5c7e02eb6ea5650f9ebbb23c2cd796f83e7ca45"
+  integrity sha512-i3MBEQ2xPsEFLLp4NjK5PC4tGA4RgUdULxiTHvmi9qCM2FlVV0YhyFoO+dQIFfW2V9AzSE0v38EPCuhZDp3RdQ==
   dependencies:
     opencollective-postinstall "^2.0.0"
-    prop-types "^15.6.2"
+    prop-types "^15.7.2"
 
 react-native-gesture-handler@^1.3.0:
   version "1.3.0"
