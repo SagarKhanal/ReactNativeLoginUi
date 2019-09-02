@@ -5010,10 +5010,10 @@ react-native-share@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-1.2.1.tgz#3756a3cf383c1489a6a0edf2b529ec025ee8f8f7"
   integrity sha512-V9q1FM+LuYJ65qN3k6BLWs17mIbJCzGyMOhF3rb4MIQXdJfCUbtkDX9aaV86PzcsL1EudCA53HVTJBmWPDed0Q==
 
-react-native-svg@^9.5.1:
-  version "9.5.1"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.5.1.tgz#eb21fa7eb5d71649620541e6549c6ed425d80240"
-  integrity sha512-cRGfomzG/5LEwuJ6ct3m5yccckeI9aj8BNYwDPVxOeJ84LuJuvk5OqcjlYNeEzOWmWiH+QrFXfpLH1ag04bUeQ==
+react-native-svg@^9.8.3:
+  version "9.8.3"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.8.3.tgz#c80f129009a06d66598b77ee91284ab548fb3a91"
+  integrity sha512-aisbIjc26fW3+phV7gb54Ky3WTFzVzDB4aGipZP3VqWWmWRZik9Z92IYWJa+QPXElkUwADgAZp3zDRrOTcYW0w==
 
 react-native-tab-view@^1.2.0, react-native-tab-view@^1.4.1:
   version "1.4.1"
