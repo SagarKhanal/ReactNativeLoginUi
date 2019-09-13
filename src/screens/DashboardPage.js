@@ -116,8 +116,8 @@ export default class DashboardPage extends Component {
                     </View>
                 </View>
                 <Modal visible={this.state.visible} transparent animationType='fade' onRequestClose={()=>this.setModalVisible(false)}>
-            <CacheImage style={{width:width,height:height}} source={{uri:this.state.temp}}/>
-            </Modal>
+                <CacheImage style={{width:width,height:height}} source={{uri:this.state.temp}}/>
+                </Modal>
             </ImageBackground>
         )
     }

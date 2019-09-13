@@ -8,8 +8,8 @@ import {
 
 
 const AppNavigaton = createStackNavigator({
-  Gallery:Gallery,
   Home:LoginPage,
+  Gallery:Gallery,
   Dashboard:DashboardPage,
 })
 
