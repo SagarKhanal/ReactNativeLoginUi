@@ -4,6 +4,14 @@
 
 # Video Assets
 assets/
+__tests__
+.prettierrc.js
+.vscode
+.buckconfig
+.flowconfig
+.gitattributes
+.watchmanconfig
+yarn.lock
 
 # Xcode
 #
